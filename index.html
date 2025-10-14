@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Albora</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+      integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>Hello, World!</h1>
+    <p id="description">This is a simple HTML document.</p>
+    <button id="myButton">Click me to change color</button>
+
+    <form action="#" method="get" id="myForm">
+      <input
+        type="text"
+        name="query"
+        id="nombre"
+        placeholder="Enter your name"
+      />
+      <br />
+      Longitud:
+      <p id="longitud">0</p>
+      <input type="submit" value="submit" />
+    </form>
+
+    <script>
+      function saludar(event) {
+        var name = $("#nombre").val();
+        alert("Hello, " + name + "!");
+        event.preventDefault();
+      }
+      function cambiarColor() {
+        $("#description").css("color", "blue");
+      }
+
+      function attachEvents() {
+        $("#myButton").click(cambiarColor);
+        $("#myForm").submit(saludar);
+
+        $("#nombre").on("keypress", function () {
+            var contenido = $("#nombre").val();
+            $("")
+        });
+      }
+
+      function mifuncion() {
+        console.log("jQuery version:", $.fn.jquery);
+        attachEvents();
+      }
+
+      function miprograma() {
+        return function () {
+          console.log("jQuery is working!");
+          mifuncion();
+        };
+      }
+
+      $(document).ready(miprograma());
+    </script>
+  </body>
+</html>
