@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="output"></div>
+    <!-- Elemento para mostrar el resultado -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        function contarRegresivo(numero) {
+          const output = document.getElementById("output");
+          if (numero <= 0) {
+            output.innerHTML += "Despegue<br>";
+          } else {
+            output.innerHTML += numero + "<br>";
+            contarRegresivo(numero - 1);
+            output.innerHTML += numero + "<br>";
+          }
+        }
+
+        function factorial(n) {
+          if (n === 0 || n === 1) {
+            return 1;
+          } else {
+            return n * factorial(n - 1);
+          }
+        }
+
+        function mergeSort(arr) {
+          if (arr.length <= 1) {
+            return arr;
+          }
+
+          const mid = Math.floor(arr.length / 2);
+          const left = arr.slice(0, mid);
+          const right = arr.slice(mid);
+
+          return merge(mergeSort(left), mergeSort(right));
+        }
+
+        console.log("Factorial de 5 es: " + factorial(5));
+
+        contarRegresivo(15);
+        const array = [38, 27, 43, 3, 9, 82, 10];
+        console.log("Array original: " + array);
+        const sortedArray = mergeSort(array);
+        console.log("Array ordenado: " + sortedArray);
+      });
+    </script>
+  </body>
+</html>

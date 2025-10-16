@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callbacks en JavaScript</title>
+</head>
+<body>
+    <script>
+        function mifuncion() {
+            console.log("Hola, soy una función callback");
+        }
+        function miSaludo() {
+            console.log("Hola, bienvenido a JavaScript");
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("Inicio");
+            setTimeout(mifuncion, 2000);
+            setTimeout(function() {
+                console.log("Fin");
+            }, 3000);
+            
+        });
+    </script>
+</body>
+</html>

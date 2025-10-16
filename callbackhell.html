@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Simulating a callback hell scenario
+            setTimeout(function() {
+                console.log("First callback");
+                setTimeout(function() {
+                    console.log("Second callback");
+                    setTimeout(function() {
+                        console.log("Third callback");
+                        setTimeout(function() {
+                            console.log("Fourth callback");
+                            // More nested callbacks can be added here
+                        }, 1000);
+                    }, 1000);
+                }, 1000);
+            }, 1000);
+        });
+        
+    </script>
+</body>
+</html>

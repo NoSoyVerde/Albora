@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btnContar1">Contador 1</button>
+    <button id="btnContar2">Contador 2</button>
+    <script>
+      // Función vehiculo
+      function vehiculo(nombre) {
+        return {
+          getNombre: function () {
+            return nombre;
+          },
+          setNombre: function (nuevoNombre) {
+            nombre = nuevoNombre;
+          },
+        };
+      }
+
+      // Función coche que hereda de vehiculo
+      function coche(nombre, marca) {
+        const v = vehiculo(nombre);
+        return {
+          getNombre: v.getNombre,
+          setNombre: v.setNombre,
+          getMarca: function () {
+            return marca;
+          },
+          setMarca: function (nuevaMarca) {
+            marca = nuevaMarca;
+          },
+        };
+      }
+
+      // Función animal
+      function animal(quehace) {
+        let action = quehace || "dormir"; // valor por defecto "dormir"
+        return {
+          getAction: function () {
+            return action;
+          },
+          setAction: function (newAction) {
+            action = newAction;
+          },
+        };
+      }
+
+      // Ejemplo de uso
+      const miCoche = coche("Mi coche", "Toyota");
+      console.log(miCoche.getNombre()); // "Mi coche"
+      console.log(miCoche.getMarca()); // "Toyota"
+
+      const miAnimal = animal();
+      console.log(miAnimal.getAction()); // "dormir"
+      miAnimal.setAction("correr");
+      console.log(miAnimal.getAction()); // "correr"
+    </script>
+  </body>
+</html>

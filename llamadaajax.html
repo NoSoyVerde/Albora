@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo de Llamada AJAX con jQuery</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f9f9f9;
+      }
+      h1 {
+        color: #333;
+      }
+      #output {
+        margin-top: 20px;
+      }
+      .post {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        background-color: #fff;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Llamada AJAX con jQuery</h1>
+    <div id="output">Cargando datos...</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      // Espera a que el DOM esté listo
+      $(document).ready(function () {
+        $.ajax({
+          url: "https://jsonplaceholder.typicode.com/posts",
+          type: "GET",
+          dataType: "json",
+          success: function (data) {
+            // Limpiamos el contenido inicial
+            $("#output").empty();
+
+            // Iteramos sobre los datos y los mostramos
+            data.forEach(function (post) {
+              const postHTML = `
+                <div class="post">
+                  <h3>${post.title}</h3>
+                  <p>${post.body}</p>
+                </div>
+              `;
+              $("#output").append(postHTML);
+            });
+          },
+          error: function (xhr, status, error) {
+            const errorMessage = "Error en la llamada AJAX: " + error;
+            console.error(errorMessage);
+            $("#output").html(`<p class="error">${errorMessage}</p>`);
+          },
+        });
+
+        console.log("Después de iniciar la llamada AJAX");
+      });
+    </script>
+  </body>
+</html>
