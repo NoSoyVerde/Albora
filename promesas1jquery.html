@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hola</h1>
+    <button id="boton1">Boton 1</button>
+    <button id="boton2">Boton 2</button>
+    <button id="boton3">Boton 3</button>
+    <div id="resultado"></div>
+    <script>
+        // cuando los tres botones se han pulsado, mostrar "Hola" en el div resultado
+        $(document).ready(function() {
+            let botonesPulsados = 0;
+
+            function botonPulsado() {
+                botonesPulsados++;
+                if (botonesPulsados === 3) {
+                    $("#resultado").text("Hola");
+                }
+            }
+
+            $("#boton1").click(botonPulsado);
+            $("#boton2").click(botonPulsado);
+            $("#boton3").click(botonPulsado);
+        }); // fin de ready
+        $(document).on("click", "#boton1, #boton2, #boton3", function() {
+            if ($("#resultado").text() === "") {
+                $("#resultado").text("Hola");
+            }
+        });
+    </script>
+</body>
+</html>
